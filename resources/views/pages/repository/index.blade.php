@@ -3,16 +3,7 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-2 text-gray-800">Berkas Repository</h1>
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Library</li>
-            </ol>
-        </nav>
-    </div>
-
+    <h1 class="h3 mb-2 text-gray-800">Berkas Repository</h1>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">

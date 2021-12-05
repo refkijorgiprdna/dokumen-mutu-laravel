@@ -17,10 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/a', function () {
-    return view('pages.dashboard');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/b', function () {
-    return view('pages.repository.index');
-});
+require __DIR__.'/auth.php';
