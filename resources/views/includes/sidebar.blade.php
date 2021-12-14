@@ -14,7 +14,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -29,11 +29,12 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('data-repository.index') }}">
                     <i class="fas fa-fw fa-database"></i>
                     <span>Repository</span></a>
             </li>
 
+            @if (Auth::user()->role == 'ADMIN')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengaturan"
                     aria-expanded="true" aria-controls="collapsePengaturan">
@@ -43,12 +44,16 @@
                 <div id="collapsePengaturan" class="collapse" aria-labelledby="headingPengaturan"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+
                         <h6 class="collapse-header">Sub Menu Pengaturan:</h6>
-                        <a class="collapse-item" href="#">User</a>
-                        <a class="collapse-item" href="#">Admin</a>
+                        <a class="collapse-item" href="{{ route('data-admin.index') }}">Admin</a>
+                        <a class="collapse-item" href="{{ route('data-dosen.index') }}">Dosen</a>
+                        <a class="collapse-item" href="{{ route('data-user.index') }}">User</a>
                     </div>
                 </div>
             </li>
+            @endif
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
