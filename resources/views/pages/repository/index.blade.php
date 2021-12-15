@@ -3,7 +3,13 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">Berkas Repository</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Berkas Repository</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Berkas Repository</li>
+        </ol>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             @if (Auth::user()->role == 'ADMIN')
@@ -86,3 +92,41 @@
 <!-- /.container-fluid -->
 
 @endsection
+
+@push('addon-script')
+    @if (Session::get('success-tambah-berkas'))
+    <script>
+        swal({
+            title: "Berhasil",
+            text: "Berkas Sudah Ditambahkan",
+            icon: "success",
+        });
+    </script>
+    @endif
+
+    @if (Session::get('success-ubah-berkas'))
+    <script>
+        swal({
+            title: "Berhasil",
+            text: "Berkas Sudah Diubah",
+            icon: "success",
+        });
+    </script>
+    @endif
+
+    @if (Session::get('success-hapus-berkas'))
+    <script>
+        swal("Berhasil Menghapus Berkas", "Berkas Sudah Terhapus Secara Permanen", "success");
+    </script>
+    @endif
+
+    @if (Session::get('success-download-berkas'))
+    <script>
+        swal({
+            title: "Berhasil",
+            text: "Berkas Sudah Didownload",
+            icon: "success",
+        });
+    </script>
+    @endif
+@endpush

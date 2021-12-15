@@ -21,3 +21,4 @@
 
 <!-- Page level custom scripts -->
 <script src="{{ url('backend/js/demo/datatables-demo.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

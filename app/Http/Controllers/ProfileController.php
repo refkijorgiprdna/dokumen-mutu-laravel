@@ -46,6 +46,6 @@ class ProfileController extends Controller
         }
         $item->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success-simpan-data','Sukses');
     }
 }

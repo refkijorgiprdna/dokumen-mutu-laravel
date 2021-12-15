@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $user = User::where('role', '=', 'USER')->count();
         $dosen = User::where('role', '=', 'DOSEN')->count();
         $repository = Repository::count();
-        
+
         return view('pages.dashboard', compact('user', 'dosen', 'repository'));
     }
 }

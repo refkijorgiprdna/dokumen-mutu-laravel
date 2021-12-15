@@ -3,7 +3,13 @@
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">Data User</h1>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h3 class="h3 mb-0 text-gray-800">Data User</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Data User</li>
+        </ol>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -50,3 +56,31 @@
 <!-- /.container-fluid -->
 
 @endsection
+
+@push('addon-script')
+    @if (Session::get('success-tambah-user'))
+    <script>
+        swal({
+            title: "Berhasil",
+            text: "Data Sudah Ditambahkan",
+            icon: "success",
+        });
+    </script>
+    @endif
+
+    @if (Session::get('success-ubah-user'))
+    <script>
+        swal({
+            title: "Berhasil",
+            text: "Data Sudah Diubah",
+            icon: "success",
+        });
+    </script>
+    @endif
+
+    @if (Session::get('success-hapus-user'))
+    <script>
+        swal("Berhasil", "Data Sudah Terhapus Secara Permanen", "success");
+    </script>
+    @endif
+@endpush

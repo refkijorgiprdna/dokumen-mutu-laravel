@@ -54,7 +54,7 @@ class DosenController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('data-dosen.index');
+        return redirect()->route('data-dosen.index')->with('success-tambah-dosen','Sukses');
     }
 
     /**
@@ -117,7 +117,7 @@ class DosenController extends Controller
         }
         $user->save();
 
-        return redirect()->route('data-dosen.index');
+        return redirect()->route('data-dosen.index')->with('success-ubah-dosen','Sukses');
     }
 
     /**
@@ -132,6 +132,6 @@ class DosenController extends Controller
 
         $item->delete();
 
-        return redirect()->route('data-dosen.index');
+        return redirect()->route('data-dosen.index')->with('success-hapus-dosen','Berhasil');
     }
 }

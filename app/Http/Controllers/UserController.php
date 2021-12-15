@@ -54,7 +54,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('data-user.index');
+        return redirect()->route('data-user.index')->with('success-tambah-user','Sukses');
     }
 
     /**
@@ -117,7 +117,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect()->route('data-user.index');
+        return redirect()->route('data-user.index')->with('success-ubah-user','Sukses');
     }
 
     /**
@@ -132,6 +132,6 @@ class UserController extends Controller
 
         $item->delete();
 
-        return redirect()->route('data-user.index');
+        return redirect()->route('data-user.index')->with('success-hapus-user','Berhasil');
     }
 }
