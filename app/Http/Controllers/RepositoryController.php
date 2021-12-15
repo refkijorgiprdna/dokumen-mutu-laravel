@@ -73,9 +73,22 @@ class RepositoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $item = Repository::findOrFail($id);
+
+        if ($request->nama_file) {
+            $value = $request->file('nama_file');
+            $extension = $value->extension();
+            $fileNames = 'file' . $request->judul_pdf . '.' . $extension;
+            Storage::putFileAs('public/file-pdf', $value, $fileNames);
+        } else {
+            $fileNames = $item->nama_file;
+        }
+
+        return view('pages.repository.show', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -88,7 +101,7 @@ class RepositoryController extends Controller
     {
         $item = Repository::findOrFail($id);
 
-        return view('data-repository.edit', [
+        return view('pages.repository.edit', [
             'item' => $item
         ]);
     }
@@ -149,5 +162,11 @@ class RepositoryController extends Controller
         $item->delete();
 
         return redirect()->route('data-repository.index');
+    }
+
+    public function download($file_name)
+    {
+        $file_path = public_path('storage/file-pdf/'.$file_name);
+        return response()->download($file_path);
     }
 }

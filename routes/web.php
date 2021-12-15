@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepositoryController;
@@ -22,11 +23,10 @@ Route::get('/', function () {
     return redirect()->route("login");
 });
 
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::resource('data-repository', RepositoryController::class);
+Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
 
 Route::resource('data-admin', AdminController::class);
 
