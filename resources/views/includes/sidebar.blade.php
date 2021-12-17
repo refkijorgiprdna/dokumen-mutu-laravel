@@ -2,11 +2,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-university"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Sistem Repository</div>
+                <div class="sidebar-brand-text mx-3">Sistem Dokumen Mutu</div>
             </a>
 
             <!-- Divider -->
@@ -30,8 +30,8 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('data-repository.index') }}">
-                    <i class="fas fa-fw fa-database"></i>
-                    <span>Repository</span></a>
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Dokumen Mutu</span></a>
             </li>
 
             @if (Auth::user()->role == 'ADMIN')
@@ -47,7 +47,6 @@
 
                         <h6 class="collapse-header">Sub Menu Pengaturan:</h6>
                         <a class="collapse-item" href="{{ route('data-admin.index') }}">Admin</a>
-                        <a class="collapse-item" href="{{ route('data-dosen.index') }}">Dosen</a>
                         <a class="collapse-item" href="{{ route('data-user.index') }}">User</a>
                     </div>
                 </div>

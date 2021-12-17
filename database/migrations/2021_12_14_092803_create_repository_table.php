@@ -15,13 +15,9 @@ class CreateRepositoryTable extends Migration
     {
         Schema::create('repository', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_repository');
             $table->string('judul');
+            $table->string('bagian');
             $table->string('nama_file');
-            $table->string('dosen_pembimbing');
-            $table->string('penulis');
-            $table->string('jurusan');
-            $table->string('fakultas');
             $table->timestamps();
         });
     }

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepositoryController;
 
@@ -19,22 +20,34 @@ use App\Http\Controllers\RepositoryController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route("login");
+// Route::get('/', function () {
+//     return redirect()->route("login");
+// });
+
+Route::middleware(['admin','auth'])
+->group(function() {
+    Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+    Route::resource('data-repository', RepositoryController::class);
+
+    Route::resource('data-admin', AdminController::class);
+
+    Route::resource('data-user', UserController::class);
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
-Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])
+->group(function() {
+    Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
+    Route::get('/show/{id}', [HomeController::class, 'show'])->name('home.show');
 
-Route::resource('data-repository', RepositoryController::class);
-Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
+});
 
-Route::resource('data-admin', AdminController::class);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::resource('data-dosen', DosenController::class);
 
-Route::resource('data-user', UserController::class);
 
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 require __DIR__.'/auth.php';

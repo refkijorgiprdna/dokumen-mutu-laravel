@@ -40,13 +40,9 @@ class RepositoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kode_repository' => ['required', 'string', 'max:9'],
             'judul' => ['required', 'string', 'max:255'],
+            'bagian' => ['required', 'string', 'max:255'],
             'nama_file' => ['required', 'mimes:pdf'],
-            'dosen_pembimbing' => ['required', 'string', 'max:255'],
-            'penulis' => ['required', 'string', 'max:255'],
-            'jurusan' => ['required', 'string', 'max:255'],
-            'fakultas' => ['required', 'string', 'max:255'],
         ]);
 
         $value = $request->file('nama_file');
@@ -55,13 +51,9 @@ class RepositoryController extends Controller
         Storage::putFileAs('public/file-pdf', $value, $fileNames);
 
         Repository::create([
-            'kode_repository' => $request->kode_repository,
             'judul' => $request->judul,
+            'bagian' => $request->bagian,
             'nama_file' => $fileNames,
-            'dosen_pembimbing' => $request->dosen_pembimbing,
-            'penulis' => $request->penulis,
-            'jurusan' => $request->jurusan,
-            'fakultas' => $request->fakultas,
         ]);
 
         return redirect()->route('data-repository.index')->with('success-tambah-berkas','Sukses');
@@ -116,13 +108,9 @@ class RepositoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kode_repository' => ['required', 'string', 'max:9'],
             'judul' => ['required', 'string', 'max:255'],
+            'bagian' => ['required', 'string', 'max:255'],
             'nama_file' => ['mimes:pdf'],
-            'dosen_pembimbing' => ['required', 'string', 'max:255'],
-            'penulis' => ['required', 'string', 'max:255'],
-            'jurusan' => ['required', 'string', 'max:255'],
-            'fakultas' => ['required', 'string', 'max:255'],
         ]);
 
         $item = Repository::findOrFail($id);
@@ -137,13 +125,9 @@ class RepositoryController extends Controller
         }
 
         $item->update([
-            'kode_repository' => $request->kode_repository,
             'judul' => $request->judul,
+            'bagian' => $request->bagian,
             'nama_file' => $fileNames,
-            'dosen_pembimbing' => $request->dosen_pembimbing,
-            'penulis' => $request->penulis,
-            'jurusan' => $request->jurusan,
-            'fakultas' => $request->fakultas,
         ]);
 
         return redirect()->route('data-repository.index')->with('success-ubah-berkas','Sukses');
