@@ -4,9 +4,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon">
-                    <i class="fas fa-university"></i>
+                    <img src="{{ url('images/logo-unib.png') }}" width="200">
                 </div>
-                <div class="sidebar-brand-text mx-3">Sistem Dokumen Mutu</div>
+                {{--  <div class="sidebar-brand-text mx-3">Sistem Dokumen Mutu</div>  --}}
             </a>
 
             <!-- Divider -->

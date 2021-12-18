@@ -2,11 +2,10 @@
 
 @section('content')
 <section id="home" class="intro-section">
-    <div class="container">
+    <div class="container mb-5">
       <div class="row align-items-center text-white">
         <!-- START THE CONTENT FOR THE INTRO  -->
-        <div class="card shadow mb-4">
-
+        <div class="card shadow mb-5 pb-2">
             <div class="card-body">
                 <h3 class="text-center" style="color: black">Dokumen Mutu</h3>
                 <div class="table-responsive">
@@ -27,15 +26,16 @@
                                     <a href="{{ route('home.show', $item->id) }}" class="btn btn-success">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('repository.download', $item->nama_file) }}" class="btn btn-secondary">
+                                    @if (Auth::user())
+                                    <a href="{{ route('download', $item->nama_file) }}" class="btn btn-secondary">
                                         <i class="fa fa-download"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @empty
 
                             @endforelse
-
                         </tbody>
                     </table>
                 </div>

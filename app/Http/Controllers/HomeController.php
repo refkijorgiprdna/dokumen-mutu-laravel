@@ -33,4 +33,10 @@ class HomeController extends Controller
             'item' => $item
         ]);
     }
+
+    public function download($file_name)
+    {
+        $file_path = public_path('storage/file-pdf/'.$file_name);
+        return response()->download($file_path);
+    }
 }

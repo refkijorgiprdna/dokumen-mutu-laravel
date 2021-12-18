@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DosenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepositoryController;
@@ -29,6 +28,7 @@ Route::middleware(['admin','auth'])
     Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
     Route::resource('data-repository', RepositoryController::class);
+    Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
 
     Route::resource('data-admin', AdminController::class);
 
@@ -40,12 +40,11 @@ Route::middleware(['admin','auth'])
 
 Route::middleware(['auth'])
 ->group(function() {
-    Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
     Route::get('/show/{id}', [HomeController::class, 'show'])->name('home.show');
-
+    Route::get('/download/{nama_file}', [HomeController::class, 'download'])->name('download');
 });
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 

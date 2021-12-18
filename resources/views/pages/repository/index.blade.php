@@ -16,7 +16,7 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{{ route('data-repository.create') }}" class="btn btn-primary mb-3">Tambah Dokumen</a>
             </div>
-            @endif
+            @endif 
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>

@@ -15,7 +15,7 @@
         <div class="card-body">
             <h3 class="text-center" style="color: black">{{ $item->judul }} </h3>
             <form action="{{ route('data-repository.show', $item->id) }}" method="POST" enctype="multipart/form-data">
-                <embed src="{{ asset('storage/file-pdf/' . $item->nama_file) }}" width="100%" height="1000"/>
+                <embed src="{{ asset('storage/file-pdf/' . $item->nama_file) }}#toolbar=0" width="100%" height="1000"/>
             </form>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark menu shadow fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="{{ route('dashboard') }}">
+      <a class="navbar-brand" href="{{ route('home') }}">
         <img src="{{ url('images/logo-unib.png') }}" alt="logo image" width="200">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,6 @@
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <a class="nav-link"  style="color: #FFF !important;" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </a>
