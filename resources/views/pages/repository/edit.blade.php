@@ -62,10 +62,24 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                <div class="form-group">
-                    <label for="nama_file">Pilih File</label>
-                    <input type="file" name="nama_file" id="nama_file" class="form-control @error('nama_file') is-invalid @enderror">
-                </div>
+                    <div class="form-group">
+                        <label for="nama_file">Tambahkan File</label>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="file" name="nama_file" id="nama_file" class="form-control @error('nama_file') is-invalid @enderror">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" name="link" id="link" class="form-control @error('link') is-invalid  @enderror" placeholder="Tambahkan Link" value="{{ $item->link }}">
+                            </div>
+                        </div>
+                        <label class="small">* Maksimal ukuran pdf 5 MB</label>
+
+                        @error('nama_file')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 <button type="submit" class="btn btn-primary btn-block">Simpan</button>
             </form>
         </div>

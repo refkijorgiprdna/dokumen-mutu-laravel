@@ -6,7 +6,13 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                @if (Auth::user()->avatar != NULL)
+                    <img src="{{ asset('storage/file-avatar/' . Auth::user()->avatar) }}" alt="" srcset="" class="rounded-circle" width="25">
+                    <span class="ml-2 mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                @else
+                    <img src="{{ url('images/avatar.png') }}" alt="" srcset="" class="rounded-circle" width="25">
+                    <span class="ml-2 mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                @endif
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

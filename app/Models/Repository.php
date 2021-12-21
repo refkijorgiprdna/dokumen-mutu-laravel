@@ -12,6 +12,6 @@ class Repository extends Model
     public $table = 'repository';
 
     protected $fillable = [
-       'judul', 'bagian', 'nama_file'
+       'judul', 'bagian', 'nama_file', 'link'
     ];
 }

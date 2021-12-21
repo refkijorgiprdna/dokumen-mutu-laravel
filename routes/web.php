@@ -42,6 +42,9 @@ Route::middleware(['auth'])
 ->group(function() {
     Route::get('/show/{id}', [HomeController::class, 'show'])->name('home.show');
     Route::get('/download/{nama_file}', [HomeController::class, 'download'])->name('download');
+
+    Route::get('/user/profile', [ProfileController::class, 'edit_user'])->name('profile.edit_user');
+    Route::patch('/user/profile/update', [ProfileController::class, 'update_user'])->name('profile.update_user');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

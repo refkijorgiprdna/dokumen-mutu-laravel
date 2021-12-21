@@ -1,5 +1,7 @@
-
 <link rel="stylesheet" href="{{ url('frontend/assets/css/style.css') }}">
+
+<link href="{{ url('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
 <link rel="stylesheet" href="{{ url('frontend/assets/css/fontawesome.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -12,7 +14,7 @@
     rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="{{ url('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
 
 <!-- Custom styles for this page -->
 <link href="{{ url('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

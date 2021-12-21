@@ -42,19 +42,38 @@ class RepositoryController extends Controller
         $request->validate([
             'judul' => ['required', 'string', 'max:255'],
             'bagian' => ['required', 'string', 'max:255'],
-            'nama_file' => ['required', 'mimes:pdf'],
+            'nama_file' => ['mimes:pdf', 'max:5124'],
         ]);
 
-        $value = $request->file('nama_file');
-        $extension = $value->extension();
-        $fileNames = 'file' . $request->judul_pdf . '.' . $extension;
-        Storage::putFileAs('public/file-pdf', $value, $fileNames);
+        if (!$request->nama_file) {
+            $request->validate([
+                'link' => 'url'
+            ]);
+        }
 
-        Repository::create([
-            'judul' => $request->judul,
-            'bagian' => $request->bagian,
-            'nama_file' => $fileNames,
-        ]);
+        if ($request->nama_file) {
+            $value = $request->file('nama_file');
+            $extension = $value->extension();
+            $fileNames = 'file' . uniqid('pdf_', microtime()) . '.' . $extension;
+            Storage::putFileAs('public/file-pdf', $value, $fileNames);
+        }
+
+        $item = new Repository();
+        $item->judul = $request->judul;
+        $item->bagian = $request->bagian;
+        if ($request->nama_file) {
+            $item->nama_file = $fileNames;
+        }elseif ($request->link) {
+            $item->link = $request->link;
+        }
+        $item->save();
+
+        // Repository::create([
+        //     'judul' => $request->judul,
+        //     'bagian' => $request->bagian,
+        //     'nama_file' => $fileNames,
+        //     'link' => $request->link,
+        // ]);
 
         return redirect()->route('data-repository.index')->with('success-tambah-berkas','Sukses');
     }
@@ -72,7 +91,7 @@ class RepositoryController extends Controller
         if ($request->nama_file) {
             $value = $request->file('nama_file');
             $extension = $value->extension();
-            $fileNames = 'file' . $request->judul_pdf . '.' . $extension;
+            $fileNames = 'file' . uniqid('pdf_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/file-pdf', $value, $fileNames);
         } else {
             $fileNames = $item->nama_file;
@@ -110,25 +129,41 @@ class RepositoryController extends Controller
         $request->validate([
             'judul' => ['required', 'string', 'max:255'],
             'bagian' => ['required', 'string', 'max:255'],
-            'nama_file' => ['mimes:pdf'],
+            'nama_file' => ['mimes:pdf', 'max:5124'],
         ]);
 
         $item = Repository::findOrFail($id);
 
+        if (!$item->nama_file) {
+            $request->validate([
+                'link' => 'url'
+            ]);
+        }
+
         if ($request->nama_file) {
             $value = $request->file('nama_file');
             $extension = $value->extension();
-            $fileNames = 'file' . $request->judul_pdf . '.' . $extension;
+            $fileNames = 'file' . uniqid('pdf_', microtime()) . '.' . $extension;
             Storage::putFileAs('public/file-pdf', $value, $fileNames);
         } else {
             $fileNames = $item->nama_file;
         }
 
-        $item->update([
-            'judul' => $request->judul,
-            'bagian' => $request->bagian,
-            'nama_file' => $fileNames,
-        ]);
+        $item->judul = $request->judul;
+        $item->bagian = $request->bagian;
+        if ($request->nama_file) {
+            $item->nama_file = $fileNames;
+        }elseif ($request->link) {
+            $item->link = $request->link;
+        }
+        $item->save();
+
+        // $item->update([
+        //     'judul' => $request->judul,
+        //     'bagian' => $request->bagian,
+        //     'nama_file' => $fileNames,
+        //     'link' => $request->link,
+        // ]);
 
         return redirect()->route('data-repository.index')->with('success-ubah-berkas','Sukses');
     }

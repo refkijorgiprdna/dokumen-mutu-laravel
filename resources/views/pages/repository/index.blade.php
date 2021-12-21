@@ -16,7 +16,7 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="{{ route('data-repository.create') }}" class="btn btn-primary mb-3">Tambah Dokumen</a>
             </div>
-            @endif 
+            @endif
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -35,9 +35,15 @@
                                 <a href="{{ route('data-repository.show', $item->id) }}" class="btn btn-success">
                                     <i class="fa fa-eye"></i>
                                 </a>
+
+                                @if ($item->nama_file != NULL)
                                 <a href="{{ route('repository.download', $item->nama_file) }}" class="btn btn-secondary">
                                     <i class="fa fa-download"></i>
                                 </a>
+                                @elseif ($item->link != NULL)
+
+                                @endif
+
                                 <a href="{{ route('data-repository.edit', $item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top"
                                     title="Edit Data">
                                     <i class="fa fa-pencil-alt"></i>
@@ -89,7 +95,7 @@
 
     @if (Session::get('success-hapus-berkas'))
     <script>
-        swal("Dokumen Menghapus Berkas", "Dokumen Sudah Terhapus Secara Permanen", "success");
+        swal("Berhasil Menghapus Dokumen", "Dokumen Sudah Terhapus Secara Permanen", "success");
     </script>
     @endif
 

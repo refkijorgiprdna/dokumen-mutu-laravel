@@ -17,7 +17,8 @@ class CreateRepositoryTable extends Migration
             $table->id();
             $table->string('judul');
             $table->string('bagian');
-            $table->string('nama_file');
+            $table->string('nama_file')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

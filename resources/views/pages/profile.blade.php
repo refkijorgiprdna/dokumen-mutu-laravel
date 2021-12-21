@@ -12,7 +12,7 @@
 
     <div class="card mb-5">
         <div class="card-body">
-            <form action="{{ route('profile.update') }}" method="POST">
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -22,6 +22,11 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Masukkan Email..." value="{{ $item->email }}">
+                </div>
+                <div class="form-group">
+                    <label for="avatar">Avatar</label>
+                    <input type="file" name="avatar" id="avatar" class="form-control" placeholder="Masukkan Avatar..." value="{{ $item->avatar }}">
+                    <label class="small">* Maksimal ukuran png/jpg 1 MB</label>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
