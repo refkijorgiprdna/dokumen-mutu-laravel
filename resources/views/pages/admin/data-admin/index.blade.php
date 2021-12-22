@@ -87,4 +87,10 @@
         swal("Berhasil", "Data Sudah Terhapus Secara Permanen", "success");
     </script>
     @endif
+
+    <script type="text/javascript">
+        table = $('#dataTable').DataTable( {
+            "lengthChange": false
+        } );
+    </script>
 @endpush

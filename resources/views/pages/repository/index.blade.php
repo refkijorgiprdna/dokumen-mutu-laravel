@@ -112,4 +112,10 @@
         });
     </script>
     @endif
+
+    <script type="text/javascript">
+        table = $('#dataTable').DataTable( {
+            "lengthChange": false
+        } );
+    </script>
 @endpush
