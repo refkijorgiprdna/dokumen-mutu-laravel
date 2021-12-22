@@ -29,7 +29,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('data-repository.index') }}">
+                <a class="nav-link" href="{{ route('dokumen-mutu.index') }}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Dokumen Mutu</span></a>
             </li>

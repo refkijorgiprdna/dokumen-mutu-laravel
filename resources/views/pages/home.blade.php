@@ -1,5 +1,9 @@
 @extends('layouts.user')
 
+@section('title')
+    <title>Beranda</title>
+@endsection
+
 @section('content')
 <section id="home" class="intro-section">
     <div class="container mb-5">

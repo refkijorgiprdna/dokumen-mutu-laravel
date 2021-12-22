@@ -75,7 +75,7 @@ class RepositoryController extends Controller
         //     'link' => $request->link,
         // ]);
 
-        return redirect()->route('data-repository.index')->with('success-tambah-berkas','Sukses');
+        return redirect()->route('dokumen-mutu.index')->with('success-tambah-berkas','Sukses');
     }
 
     /**
@@ -165,7 +165,7 @@ class RepositoryController extends Controller
         //     'link' => $request->link,
         // ]);
 
-        return redirect()->route('data-repository.index')->with('success-ubah-berkas','Sukses');
+        return redirect()->route('dokumen-mutu.index')->with('success-ubah-berkas','Sukses');
     }
 
     /**
@@ -180,7 +180,7 @@ class RepositoryController extends Controller
 
         $item->delete();
 
-        return redirect()->route('data-repository.index')->with('success-hapus-berkas','Berhasil');
+        return redirect()->route('dokumen-mutu.index')->with('success-hapus-berkas','Berhasil');
     }
 
     public function download($file_name)

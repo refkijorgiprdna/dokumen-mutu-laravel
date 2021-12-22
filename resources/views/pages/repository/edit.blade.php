@@ -1,19 +1,23 @@
 @extends('layouts.admin')
 
+@section('title')
+    <title>Admin | Edit Dokumen Mutu</title>
+@endsection
+
 @section('content')
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dokumen Mutu</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('data-repository.index') }}">Dokumen Mutu</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dokumen-mutu.index') }}">Dokumen Mutu</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit Dokumen</li>
         </ol>
     </div>
 
     <div class="card mb-5">
         <div class="card-body">
-            <form action="{{ route('data-repository.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('dokumen-mutu.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">

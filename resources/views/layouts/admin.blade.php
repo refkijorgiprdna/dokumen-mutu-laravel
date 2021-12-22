@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    @yield('title')
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('images/logo-unib1.png') }}" />
 
     @include('includes.style')
 

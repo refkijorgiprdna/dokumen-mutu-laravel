@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('title')
+    <title>Admin | Data User</title>
+@endsection
+
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">

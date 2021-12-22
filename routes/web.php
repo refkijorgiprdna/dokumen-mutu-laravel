@@ -27,8 +27,8 @@ Route::middleware(['admin','auth'])
 ->group(function() {
     Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-    Route::resource('data-repository', RepositoryController::class);
-    Route::get('data-repository/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
+    Route::resource('dokumen-mutu', RepositoryController::class);
+    Route::get('dokumen-mutu/download/{nama_file}', [RepositoryController::class, 'download'])->name('repository.download');
 
     Route::resource('data-admin', AdminController::class);
 

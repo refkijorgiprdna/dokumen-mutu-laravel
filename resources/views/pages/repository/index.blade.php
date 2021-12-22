@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('title')
+    <title>Admin | Dokumen Mutu</title>
+@endsection
+
 @section('content')
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -14,7 +18,7 @@
         <div class="card-body">
             @if (Auth::user()->role == 'ADMIN')
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="{{ route('data-repository.create') }}" class="btn btn-primary mb-3">Tambah Dokumen</a>
+                <a href="{{ route('dokumen-mutu.create') }}" class="btn btn-primary mb-3">Tambah Dokumen</a>
             </div>
             @endif
             <div class="table-responsive">
@@ -32,7 +36,7 @@
                             <td>{{ $item->judul }}</td>
                             <td>{{ $item->bagian }}</td>
                             <td class="text-center">
-                                <a href="{{ route('data-repository.show', $item->id) }}" class="btn btn-success">
+                                <a href="{{ route('dokumen-mutu.show', $item->id) }}" class="btn btn-success">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
@@ -44,11 +48,11 @@
 
                                 @endif
 
-                                <a href="{{ route('data-repository.edit', $item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top"
+                                <a href="{{ route('dokumen-mutu.edit', $item->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="top"
                                     title="Edit Data">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
-                                <form action="{{ route('data-repository.destroy', $item->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('dokumen-mutu.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">
