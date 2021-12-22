@@ -94,4 +94,10 @@
         });
     </script>
     @endif
+
+    <script type="text/javascript">
+        table = $('#dataTable').DataTable( {
+            "ordering": false
+        } );
+    </script>
 @endpush

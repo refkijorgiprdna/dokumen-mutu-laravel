@@ -115,7 +115,8 @@
 
     <script type="text/javascript">
         table = $('#dataTable').DataTable( {
-            "lengthChange": false
+            "lengthChange": false,
+            "ordering": false
         } );
     </script>
 @endpush
